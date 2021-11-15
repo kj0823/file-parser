@@ -1,0 +1,4 @@
+com.company.fileparser.core.file.reader
+com.company.fileparser.entry
+com.company.fileparser.properties
+com.company.fileparser.utils

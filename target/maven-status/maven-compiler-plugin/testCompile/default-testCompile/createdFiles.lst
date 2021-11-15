@@ -1,0 +1,7 @@
+com/company/fileparser/junit/utils/FilePathUtilsTest.class
+com/company/fileparser/junit/utils/MainUtilityTest.class
+com/company/fileparser/junit/properties/FileParserPropertiesTest.class
+com/company/fileparser/junit/core/file/reader/PatternMatchingFileReaderTest.class
+com/company/fileparser/junit/entry/MainTest.class
+com/company/fileparser/junit/utils/ParseFileUtilsTest.class
+com/company/fileparser/testutils/PathUtils.class

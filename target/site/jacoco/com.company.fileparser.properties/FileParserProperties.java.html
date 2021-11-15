@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileParserProperties.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">file-parser</a> &gt; <a href="index.source.html" class="el_package">com.company.fileparser.properties</a> &gt; <span class="el_source">FileParserProperties.java</span></div><h1>FileParserProperties.java</h1><pre class="source lang-java linenums">package com.company.fileparser.properties;
+
+import org.apache.commons.configuration2.FileBasedConfiguration;
+import org.apache.commons.configuration2.PropertiesConfiguration;
+import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Parameters;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
+/** Loads property file from resource folder */
+public class FileParserProperties {
+  // Hardcoded for now but in real project we will load all property files in resource folder
+  private static final String PROP_FILE_PATH = &quot;validExtensions.properties&quot;;
+<span class="fc" id="L13">  private static FileParserProperties fileParserProperties = null;</span>
+  private FileBasedConfiguration configuration;
+
+  // Hardcoded for now but in real project we will load all property files in resource folder using
+  // apache/spring/other framework to load resource bundle
+  // Ignored writing to test for exception as String is hard coded
+<span class="fc" id="L19">  private FileParserProperties() throws ConfigurationException {</span>
+<span class="fc" id="L20">    Parameters params = new Parameters();</span>
+<span class="fc" id="L21">    FileBasedConfigurationBuilder&lt;FileBasedConfiguration&gt; builder =</span>
+        new FileBasedConfigurationBuilder&lt;FileBasedConfiguration&gt;(PropertiesConfiguration.class)
+<span class="fc" id="L23">            .configure(params.properties().setFileName(PROP_FILE_PATH));</span>
+
+<span class="fc" id="L25">    configuration = builder.getConfiguration();</span>
+<span class="fc" id="L26">  }</span>
+
+  // Ideally we handle exception scenario  instead of  rethrowing due to time constraint  rethrow
+  // could have catch exception either return null or rethrow custom error with custom message.
+
+  /**
+   * @return FileParserProperties singleton
+   * @throws ConfigurationException if configuration files not found or not able to parse or read
+   */
+  public static FileParserProperties getInstance() throws ConfigurationException {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    if (fileParserProperties == null) fileParserProperties = new FileParserProperties();</span>
+<span class="fc" id="L37">    return fileParserProperties;</span>
+  }
+
+  /**
+   * @param key that matches in property file
+   * @return value that corresponds in property file if key does not found it returns null
+   */
+  public String getPropertyValue(String key) {
+<span class="fc" id="L45">    return (String) configuration.getProperty(key);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

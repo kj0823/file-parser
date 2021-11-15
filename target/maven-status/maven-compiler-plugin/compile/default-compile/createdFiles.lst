@@ -1,0 +1,7 @@
+com/company/fileparser/utils/ParseFileUtils.class
+com/company/fileparser/core/file/reader/DefaultPatternMatchingFileReader.class
+com/company/fileparser/properties/FileParserProperties.class
+com/company/fileparser/utils/MainUtility.class
+com/company/fileparser/utils/FilePathUtils.class
+com/company/fileparser/entry/Main.class
+com/company/fileparser/core/file/reader/PatternMatchingFileReader.class
